@@ -116,17 +116,42 @@ const data = [
   Refresh the page to see the new article.
 */
 function articleMaker(articleObject){
-  const newObj = document.createElement('div', 'p')
-  newObj.classList.add('article')
-  newObj.classList.add('date')
-  newObj.textContent = articleObject
-  newObj.addEventListener('click', function (event){
-    document.querySelector('.article-open')
-  })
-  return newObj
+  const div = document.createElement('div')
+  const h2 = document.createElement('h2')
+  const articleDate = document.createElement('p')
+  const p1 = document.createElement('p')
+  const p2 = document.createElement('p')
+  const p3 = document.createElement('p')
+  const span = document.createElement('span')
+
+  div.appendChild(h2)
+  div.appendChild(articleDate)
+  div.appendChild(p1)
+  div.appendChild(p2)
+  div.appendChild(p3)
+  div.appendChild(span)
+
+  div.classList.add('article')
+  articleDate.classList.add('date')
+  span.classList.add('expandButton')
+
+//   const newObj = document.createElement('div')
+//   newObj.classList.add('article')
+//   newObj.textContent = articleObject
+//   const paragraph = document.createElement('p')
+//   paragraph.classList.add('date')
+//   const span = document.createElement('span')
+//   span.classList.add('expandButton')
+//   span.addEventListener('mousover', function (event){
+//     span.classList.toggle('.articles')
+//   })
+//   return newObj
 }
+
+const articles = document.querySelector('.articles')
+
 data.forEach(object => {
  const article = articleMaker(object)
- document.body.appendChild(article)
+ return articles.appendChild(article)
 })
 
