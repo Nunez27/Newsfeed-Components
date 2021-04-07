@@ -94,6 +94,7 @@ const data = [
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
 
+
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
@@ -114,3 +115,18 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+function articleMaker(articleObject){
+  const newObj = document.createElement('div', 'p')
+  newObj.classList.add('article')
+  newObj.classList.add('date')
+  newObj.textContent = articleObject
+  newObj.addEventListener('click', function (event){
+    document.querySelector('.article-open')
+  })
+  return newObj
+}
+data.forEach(object => {
+ const article = articleMaker(object)
+ document.body.appendChild(article)
+})
+
