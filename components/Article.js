@@ -117,12 +117,23 @@ const data = [
 */
 function articleMaker(articleObject){
   const div = document.createElement('div')
+  div.classList.add('article')
   const h2 = document.createElement('h2')
+  h2.innerText = articleObject.title
   const articleDate = document.createElement('p')
+  articleDate.innerText = articleObject.date
   const p1 = document.createElement('p')
+  p1.innerText = articleObject.firstParagraph
   const p2 = document.createElement('p')
+  p2.innerText = articleObject.secondParagraph
   const p3 = document.createElement('p')
+  p3.innerText = articleObject.thirdParagraph
   const span = document.createElement('span')
+  span.classList.add('expandButton')
+  span.innerText = '+'
+  span.addEventListener('click', function (event){
+    div.classList.toggle('article-open')
+  })
 
   div.appendChild(h2)
   div.appendChild(articleDate)
@@ -131,9 +142,9 @@ function articleMaker(articleObject){
   div.appendChild(p3)
   div.appendChild(span)
 
-  div.classList.add('article')
-  articleDate.classList.add('date')
-  span.classList.add('expandButton')
+  return div
+
+
 
 //   const newObj = document.createElement('div')
 //   newObj.classList.add('article')
@@ -151,7 +162,7 @@ function articleMaker(articleObject){
 const articles = document.querySelector('.articles')
 
 data.forEach(object => {
- const article = articleMaker(object)
- return articles.appendChild(article)
+  const articles = document.querySelector('.articles')
+ return articles.appendChild(articleMaker(object))
 })
 
